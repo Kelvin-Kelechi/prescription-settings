@@ -7,15 +7,15 @@ const Sidebar: React.FC = () => {
   const location = useLocation();
   const [activePath, setActivePath] = useState<string | null>(null);
 
-  // Update active path based on current URL and store it in localStorage
+ 
   useEffect(() => {
     const currentPath = location.pathname;
     setActivePath(currentPath);
-    localStorage.setItem("activeSidebarLink", currentPath); // Store active link in localStorage
+    localStorage.setItem("activeSidebarLink", currentPath);  
   }, [location]);
 
   useEffect(() => {
-    // Retrieve active link from localStorage when component mounts
+ 
     const storedActivePath = localStorage.getItem("activeSidebarLink");
     if (storedActivePath) {
       setActivePath(storedActivePath);
@@ -38,11 +38,11 @@ const Sidebar: React.FC = () => {
         <nav className="space-y-6">
           {SidebarData.map((item) => (
             <Link
-              to={item.path} // Use 'Link' to handle navigation in React Router
+              to={item.path}  
               key={item.selectorId}
               className={`flex items-center space-x-2 text-[#110C2C] hover:text-gray-800 hover:bg-[#F5F5F5] px-4 py-2 w-full ${
                 activePath === item.path
-                  ? "bg-[#F5F5F5] border-r-4 border-[#110C2C]" // Apply active styles
+                  ? "bg-[#F5F5F5] border-r-4 border-[#110C2C]"  
                   : ""
               }`}
             >

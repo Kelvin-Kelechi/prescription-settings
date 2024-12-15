@@ -1,14 +1,14 @@
 import React from "react";
 import Template from "../../../assets/images/template.png";
 
-// Define the types for the props
+ 
 interface PrescripLayoutProps {
   isModalOpen: boolean;
   closeModal: () => void;
   handleAddTemplateClick: () => void;
   handleAddTemplate: () => void;
   handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  templates: { id: string; preview: string }[]; // Define the type for 'templates'
+  templates: { id: string; preview: string }[];  
 }
 
 const PrescripLayout: React.FC<PrescripLayoutProps> = ({
@@ -17,7 +17,7 @@ const PrescripLayout: React.FC<PrescripLayoutProps> = ({
   handleAddTemplate,
   handleImageChange,
   closeModal,
-  templates, // Access templates here
+  templates,  
 }) => {
   return (
     <div>

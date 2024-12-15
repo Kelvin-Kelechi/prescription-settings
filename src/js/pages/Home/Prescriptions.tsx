@@ -3,7 +3,7 @@ import { FaCamera } from "react-icons/fa";
 import Template from "../../../assets/images/template.png";
 interface Template {
   id: string;
-  preview:string
+  preview: string;
 }
 const Prescriptions = ({ templates }: { templates: Template[] }) => {
   const [doctorName, setDoctorName] = useState("");
@@ -110,7 +110,7 @@ const Prescriptions = ({ templates }: { templates: Template[] }) => {
           <div className="h-full bg-gray-200 flex items-center justify-center">
             {templates.length === 0 ? (
               <img
-                src={Template} // Displays the uploaded image
+                src={Template}
                 alt="Prescription Preview"
                 className="w-full h-full object-cover rounded-md"
               />
@@ -138,7 +138,7 @@ const Prescriptions = ({ templates }: { templates: Template[] }) => {
           <h3 className="text-md font-semibold text-[#777777] mt-6">
             Header Info
           </h3>
-          {/* Header Info */}
+
           <div className="flex justify-between">
             <label className="block mt-4 text-gray-700 font-medium mb-2">
               Add Clinic Logo
@@ -203,7 +203,6 @@ const Prescriptions = ({ templates }: { templates: Template[] }) => {
             </div>
           </div>
 
-          {/* Footer Info */}
           <h3 className="text-md font-semibold text-[#777777] mt-6">
             Footer Info
           </h3>
@@ -253,13 +252,11 @@ const Prescriptions = ({ templates }: { templates: Template[] }) => {
               </p>
             </div>
 
-            {/* Clinic Hours */}
             <div>
               <h3 className="text-md font-semibold my-6">Clinic Open Hours</h3>
 
               {timeInputs.map((input, index) => (
                 <div key={index} className="space-y-4 mb-6">
-                  {/* Start Time */}
                   <span className="text-gray-700 font-medium ">Time</span>
                   <div className="flex items-center space-x-4">
                     <div className="flex items-center">
@@ -325,7 +322,6 @@ const Prescriptions = ({ templates }: { templates: Template[] }) => {
                     </div>
                   </div>
 
-                  {/* End Time */}
                   <div className="flex items-center space-x-4">
                     <div className="flex items-center">
                       <label className="block text-gray-700 font-medium mr-2">
@@ -447,7 +443,6 @@ const Prescriptions = ({ templates }: { templates: Template[] }) => {
               )}
             </div>
 
-            {/* Auto Fill Data */}
             <h3 className="text-md font-semibold text-[#777777] mt-6">
               Body Info
             </h3>
@@ -469,7 +464,7 @@ const Prescriptions = ({ templates }: { templates: Template[] }) => {
                     <input
                       type="checkbox"
                       className="w-5 h-5 text-green-500 border-gray-300 rounded focus:ring-green-500"
-                      defaultChecked={index % 2 === 0} // Alternate checked states for demonstration
+                      defaultChecked={index % 2 === 0}
                     />
                     <label className="text-gray-700">{label}</label>
                   </div>
@@ -477,7 +472,6 @@ const Prescriptions = ({ templates }: { templates: Template[] }) => {
               </div>
             </div>
 
-            {/* Save Button */}
             <div className="flex justify-center">
               {" "}
               <button

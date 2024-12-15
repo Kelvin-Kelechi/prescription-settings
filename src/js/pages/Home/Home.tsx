@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-
 import Profile from "../../compenents/ProfileSection/Profile";
 import PrescripLayout from "../../compenents/PrescriptionLayout/PrescripLayout";
 import Prescription from "./Prescriptions";
 
 const UserProfile: React.FC = () => {
-
   const [showPrescriptions, setShowPrescriptions] = useState(false);
   const [aiPredictiveSearchEnabled, setAiPredictiveSearchEnabled] =
     useState(false);
@@ -18,33 +16,33 @@ const UserProfile: React.FC = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-const handleAddTemplate = () => {
-  if (templateImage) {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const newTemplate = {
-        id: templates.length + 1,
-        image: reader.result as string,
-        isFullHeight: templates.length % 2 === 0, // Alternate between h-full and h-32
-        preview: `<div>
+  const handleAddTemplate = () => {
+    if (templateImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const newTemplate = {
+          id: templates.length + 1,
+          image: reader.result as string,
+          isFullHeight: templates.length % 2 === 0,
+          preview: `<div>
                     <img src="${reader.result}" alt="Template Image" class="${
-          templates.length % 2 === 0 ? "h-full" : "h-32"
-        } w-full object-cover mb-2" />
+            templates.length % 2 === 0 ? "h-full" : "h-32"
+          } w-full object-cover mb-2" />
                   </div>`,
+        };
+        setTemplates([...templates, newTemplate]);
+        setTemplateImage(null);
+        closeModal();
       };
-      setTemplates([...templates, newTemplate]);
-      setTemplateImage(null);
-      closeModal();
-    };
-    reader.readAsDataURL(templateImage);
-  }
-};
+      reader.readAsDataURL(templateImage);
+    }
+  };
 
- const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-   if (e.target.files && e.target.files[0]) {
-     setTemplateImage(e.target.files[0]);
-   }
- };
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setTemplateImage(e.target.files[0]);
+    }
+  };
 
   const handleChangeSubscription = () => {
     setShowPrescriptions(true);
