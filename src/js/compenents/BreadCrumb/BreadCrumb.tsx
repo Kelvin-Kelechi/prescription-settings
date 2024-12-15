@@ -1,8 +1,8 @@
-import { FaSyncAlt } from "react-icons/fa";
+import { MdRefresh } from "react-icons/md";
 
 const BreadCrumb = () => {
   return (
-    <div className="flex items-center justify-between p-4 border-b bg-white">
+    <div className="flex items-center px-12 justify-between p-4 border-b bg-white">
       <div className="text-gray-600">
         <span className="text-sm">
           <a href="#" className="hover:underline">
@@ -14,8 +14,8 @@ const BreadCrumb = () => {
           </a>
         </span>
       </div>
-      <button className="flex items-center text-gray-600 hover:text-gray-800">
-        <FaSyncAlt className="mr-1" /> Refresh
+      <button className="flex items-center text-black hover:text-gray-800">
+        <MdRefresh size={25} className="mr-1" /> Refresh
       </button>
     </div>
   );

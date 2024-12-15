@@ -23,7 +23,7 @@ const UserProfile: React.FC = () => {
   }
 
   return (
-    <div className="bg-white min-h-screen text-gray-800 font-sans">
+    <div className="bg-white min-h-screen px-4 text-gray-800 font-sans">
       <div className="p-8 flex space-x-8">
         <div className="w-2/4">
           <Profile />
