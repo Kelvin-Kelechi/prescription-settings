@@ -13,7 +13,7 @@ const IndexPage = () => {
       <div className="flex-1 h-full overflow-x-hidden flex flex-col transition-all duration-300 ease-in-ou">
         <Header />
         <BreadCrumb />
-        <div className="relative bg-[#1B1C2D] mb-10 w-full">
+        <div className="relative bg-white mb-10 w-full">
           <Outlet />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import PaymentRecord from "./PaymentRecord";
 
- 
-
-const paymentRecordRoutes = [{ path: "/payment", element: <PaymentRecord />, index: true }];
+const paymentRecordRoutes = [
+  { path: "/payments-record", element: <PaymentRecord />, index: true },
+];
 
 export default paymentRecordRoutes;
