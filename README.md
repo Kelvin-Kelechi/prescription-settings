@@ -1,51 +1,40 @@
-# React + TypeScript + Vite
+# Prescription Settings
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **React + TypeScript** application built with **Vite**, designed to manage and display prescription templates. Users can select predefined templates, upload custom templates, and fill in prescription details. The layout is specifically optimized for desktop devices and styled using **Tailwind CSS**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Template Management**:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  - Display default templates when no custom templates are available.
+  - Dynamically render user-uploaded templates with real-time previews.
 
-- Configure the top-level `parserOptions` property like this:
+- **Custom Template Upload**:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+  - Upload and preview custom templates via the FileReader API.
+  - Images are processed as base64 data for display.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Prescription Details**:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+  - Fill in prescription details dynamically for each template.
+  - Add, remove, or clear time slots for prescription-related activities.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# prescription-settings
+- **Responsive Design**:
+
+  - Optimized for desktop devices using **Tailwind CSS** for styling.
+
+- **Modal Interface**:
+  - A modal window for uploading and managing templates.
+  - Includes intuitive buttons for adding templates or closing the modal.
+
+---
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   https://github.com/Kelvin-Kelechi/prescription-settings.git
+   cd prescription-settings
+   ```

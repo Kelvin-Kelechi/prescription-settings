@@ -49,7 +49,7 @@ const Header: React.FC = () => {
           />
         </div>
         {isDropdownOpen && (
-          <div className="absolute right-2  mt-20 w-22 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+          <div className="absolute right-4  mt-20 w-22 bg-white border border-gray-200 rounded-md shadow-lg z-50">
             <ul className="py-0">
               <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">EN</li>
             </ul>

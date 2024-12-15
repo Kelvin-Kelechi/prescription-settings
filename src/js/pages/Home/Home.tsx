@@ -1,14 +1,50 @@
 import React, { useState } from "react";
 
- 
 import Profile from "../../compenents/ProfileSection/Profile";
 import PrescripLayout from "../../compenents/PrescriptionLayout/PrescripLayout";
 import Prescription from "./Prescriptions";
 
 const UserProfile: React.FC = () => {
+
   const [showPrescriptions, setShowPrescriptions] = useState(false);
   const [aiPredictiveSearchEnabled, setAiPredictiveSearchEnabled] =
     useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [templateImage, setTemplateImage] = useState<File | null>(null);
+  const [templates, setTemplates] = useState<any[]>([]);
+  const handleAddTemplateClick = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+const handleAddTemplate = () => {
+  if (templateImage) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const newTemplate = {
+        id: templates.length + 1,
+        image: reader.result as string,
+        isFullHeight: templates.length % 2 === 0, // Alternate between h-full and h-32
+        preview: `<div>
+                    <img src="${reader.result}" alt="Template Image" class="${
+          templates.length % 2 === 0 ? "h-full" : "h-32"
+        } w-full object-cover mb-2" />
+                  </div>`,
+      };
+      setTemplates([...templates, newTemplate]);
+      setTemplateImage(null);
+      closeModal();
+    };
+    reader.readAsDataURL(templateImage);
+  }
+};
+
+ const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+   if (e.target.files && e.target.files[0]) {
+     setTemplateImage(e.target.files[0]);
+   }
+ };
 
   const handleChangeSubscription = () => {
     setShowPrescriptions(true);
@@ -19,16 +55,16 @@ const UserProfile: React.FC = () => {
   };
 
   if (showPrescriptions) {
-    return <Prescription />;
+    return <Prescription templates={templates} />;
   }
 
   return (
     <div className="bg-white min-h-screen px-4 text-gray-800 font-sans">
       <div className="p-8 flex space-x-8">
-        <div className="w-2/4">
+        <div className="w-2/4 border-t border-l">
           <Profile />
 
-          <div className="bg-white rounded-md divide-y divide-gray-200">
+          <div className="bg-white rounded-md   divide-gray-200">
             {[
               "Manage Clinics",
               "Clinic Details",
@@ -37,8 +73,8 @@ const UserProfile: React.FC = () => {
             ].map((item, index) => (
               <button
                 key={index}
-                className={`w-full text-left px-4 py-3 hover:bg-gray-100 ${
-                  index === 3 ? "bg-gray-100" : ""
+                className={`w-full mb-2 bg-[#F5F5F5] text-left px-4 py-3 hover:bg-[#EBEBEB] ${
+                  index === 3 ? "bg-[#EBEBEB]" : ""
                 }`}
               >
                 {item}
@@ -62,11 +98,11 @@ const UserProfile: React.FC = () => {
                       checked={aiPredictiveSearchEnabled}
                       onChange={toggleAiPredictiveSearch}
                     />
-                    <span className="toggle-bg block w-12 h-6 bg-gray-400 rounded-full"></span>
+                    <span className="toggle-bg block w-12 h-6 bg-[#EEEEEE] rounded-full"></span>
                     <span
                       className={`toggle-dot absolute top-0 left-0 w-6 h-6 bg-white rounded-full transition-all ${
                         !aiPredictiveSearchEnabled
-                          ? "transform translate-x-6 bg-blue-600"
+                          ? "transform translate-x-6 bg-[#5351C7]"
                           : ""
                       }`}
                     ></span>
@@ -80,7 +116,14 @@ const UserProfile: React.FC = () => {
               </p>
             </div>
 
-            <PrescripLayout />
+            <PrescripLayout
+              templates={templates}
+              isModalOpen={isModalOpen}
+              handleImageChange={handleImageChange}
+              handleAddTemplateClick={handleAddTemplateClick}
+              handleAddTemplate={handleAddTemplate}
+              closeModal={closeModal}
+            />
 
             <div className="mt-4">
               <a
