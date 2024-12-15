@@ -1,15 +1,10 @@
-import {
-  FaHome,
-  FaCalendarAlt,
-  FaWhatsapp,
-  FaFileMedical,
-  FaUserFriends,
-  FaDollarSign,
-  FaChartLine,
-} from "react-icons/fa";
- import { BiHomeAlt2 } from "react-icons/bi";
- import { LuCalendarDays } from "react-icons/lu";
+import { FaWhatsapp } from "react-icons/fa";
+import { BiHomeAlt2 } from "react-icons/bi";
+import { LuCalendarDays } from "react-icons/lu";
 import { PiChartLineUpLight } from "react-icons/pi";
+import { PiCards } from "react-icons/pi";
+import { MdOutlinePerson3 } from "react-icons/md";
+import { MdOutlinePersonalInjury } from "react-icons/md";
 export const SidebarData = [
   {
     path: "/",
@@ -32,19 +27,19 @@ export const SidebarData = [
   {
     path: "/patients-record",
     title: "Patients Record",
-    icon: <FaFileMedical className=" text-[20px] md:text-[30px]" />,
+    icon: <MdOutlinePersonalInjury className=" text-[20px] md:text-[30px]" />,
     selectorId: "patients-record",
   },
   {
     path: "/manage-staff",
     title: "Manage Staff",
-    icon: <FaUserFriends className=" text-[20px] md:text-[30px]" />,
+    icon: <MdOutlinePerson3 className=" text-[20px] md:text-[30px]" />,
     selectorId: "manage-staff",
   },
   {
     path: "/payments-record",
     title: "Payments Record",
-    icon: <FaDollarSign className=" text-[20px] md:text-[30px]" />,
+    icon: <PiCards className=" text-[20px] md:text-[30px]" />,
     selectorId: "payments-record",
   },
   {

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { FaSyncAlt } from "react-icons/fa";
-import Prescriptions from "./Prescriptions";
+
+ 
+import Profile from "../../compenents/ProfileSection/Profile";
+import PrescripLayout from "../../compenents/PrescriptionLayout/PrescripLayout";
+import Prescription from "./Prescriptions";
 
 const UserProfile: React.FC = () => {
   const [showPrescriptions, setShowPrescriptions] = useState(false);
@@ -15,62 +18,16 @@ const UserProfile: React.FC = () => {
     setAiPredictiveSearchEnabled((prev) => !prev);
   };
 
-  // If showPrescriptions is true, return only the Prescriptions component
   if (showPrescriptions) {
-    return <Prescriptions />;
+    return <Prescription />;
   }
 
   return (
     <div className="bg-white min-h-screen text-gray-800 font-sans">
-      {/* Header Section */}
-      <div className="flex items-center justify-between p-4 border-b bg-white">
-        <div className="text-gray-600">
-          <span className="text-sm">
-            <a href="#" className="hover:underline">
-              Home
-            </a>{" "}
-            &gt;{" "}
-            <a href="#" className="hover:underline">
-              User Profile
-            </a>
-          </span>
-        </div>
-        <button className="flex items-center text-gray-600 hover:text-gray-800">
-          <FaSyncAlt className="mr-1" /> Refresh
-        </button>
-      </div>
-
-      {/* Main Content */}
       <div className="p-8 flex space-x-8">
-        {/* Left Sidebar */}
         <div className="w-2/4">
-          {/* Profile Card */}
-          <div className="bg-white p-4 rounded-md flex items-center mb-4 shadow-md">
-            {/* Profile Image */}
-            <img
-              src="https://via.placeholder.com/80"
-              alt="Profile"
-              className="rounded-full w-20 h-20 mr-4"
-            />
+          <Profile />
 
-            {/* Profile Details */}
-            <div className="flex-1">
-              <p className="font-medium text-lg">Dr. Kim Jones</p>
-              <span className="text-xs text-white bg-yellow-400 px-2 py-1 rounded-md">
-                Super Admin
-              </span>
-              <div className="mt-4 space-x-2">
-                <button className="bg-green-500 text-white px-4 py-1 rounded-md">
-                  Save
-                </button>
-                <button className="bg-gray-200 text-gray-600 px-4 py-1 rounded-md">
-                  Cancel
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Links */}
           <div className="bg-white rounded-md divide-y divide-gray-200">
             {[
               "Manage Clinics",
@@ -90,15 +47,13 @@ const UserProfile: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Section */}
         <div className="w-3/4">
           <h2 className="font-bold text-gray-800 text-xl mb-4">SETTINGS</h2>
           <div className="bg-white rounded-md p-6">
-            {/* AI Predictive Search */}
             <div className="mb-6">
               <div className="mb-6 flex items-center justify-between">
                 <h3 className="font-semibold mb-2">Ai Predictive Search</h3>
-                {/* Toggle Switch */}
+
                 <label className="inline-flex items-center cursor-pointer">
                   <span className="relative">
                     <input
@@ -125,27 +80,8 @@ const UserProfile: React.FC = () => {
               </p>
             </div>
 
-            {/* Prescription Layout */}
-            <div>
-              <h3 className="font-semibold mb-2">Prescription layout</h3>
-              <p className="text-sm text-gray-500 mb-4">
-                Choose from the templates available or add your own template.
-              </p>
+            <PrescripLayout />
 
-              {/* Template Section */}
-              <div className="flex space-x-4">
-                <div className="w-32 h-32 bg-gray-100 flex items-center justify-center rounded-md">
-                  <button className="flex flex-col items-center text-gray-500">
-                    <span className="text-3xl">+</span>
-                    <span className="text-sm">Add custom template</span>
-                  </button>
-                </div>
-                <div className="w-32 h-32 bg-gray-300 rounded-md"></div>
-                <div className="w-32 h-32 bg-gray-300 rounded-md"></div>
-              </div>
-            </div>
-
-            {/* Change Link */}
             <div className="mt-4">
               <a
                 onClick={handleChangeSubscription}
